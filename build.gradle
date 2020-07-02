@@ -52,8 +52,8 @@ subprojects {
 
         Properties properties = new Properties()
         properties.load(project.rootProject.file('local.properties').newDataInputStream())
-        def bintrayUser = properties.getProperty('bintray.user')
-        def bintrayApikey = properties.getProperty('bintray.apikey')
+        def bintrayUser = properties.getProperty('gpr.usr')
+        def bintrayApikey = properties.getProperty('gpr.key')
 
         if(project.isLibrary && bintrayUser?.trim() && bintrayApikey?.trim()) {
             configure(project) {
@@ -69,12 +69,12 @@ subprojects {
                             packaging project.pomPackaging
                             artifactId project.pomArtifactId
                             description project.pomDescription
-                            url 'https://github.com/dm77/barcodescanner'
+                            url 'https://github.com/morganor/barcodescanner'
 
                             scm {
-                                url 'scm:git@github.com:dm77/barcodescanner.git'
-                                connection 'scm:git@github.com:dm77/barcodescanner.git'
-                                developerConnection 'scm:git@github.com:dm77/barcodescanner.git'
+                                url 'scm:git@github.com:morganor/barcodescanner.git'
+                                connection 'scm:git@github.com:morganor/barcodescanner.git'
+                                developerConnection 'scm:git@github.com:morganor/barcodescanner.git'
                             }
 
                             licenses {
@@ -87,9 +87,9 @@ subprojects {
 
                             developers {
                                 developer {
-                                    id 'dm77'
-                                    name 'Dushyanth Maguluru'
-                                    email 'dushyanth.maguluru@gmail.com'
+                                    id 'morganor'
+                                    name 'Morganor'
+                                    email 'morganor.tools@gmail.com'
                                 }
                             }
                         }
@@ -118,16 +118,16 @@ subprojects {
                 }
 
                 bintray {
-                    user = properties.getProperty("bintray.user")
-                    key = properties.getProperty("bintray.apikey")
+                    user = properties.getProperty("gpr.usr")
+                    key = properties.getProperty("gpr.key")
 
                     configurations = ['archives']
                     pkg {
                         repo = 'maven'
-                        name = 'me.dm7.barcodescanner:' + project.pomArtifactId
+                        name = 'me.morganor.barcodescanner:' + project.pomArtifactId
                         desc = 'Barcode Scanner Libraries for Android'
-                        websiteUrl = 'https://github.com/dm77/barcodescanner'
-                        vcsUrl = 'https://github.com/dm77/barcodescanner.git'
+                        websiteUrl = 'https://github.com/morganor/barcodescanner'
+                        vcsUrl = 'https://github.com/morganor/barcodescanner.git'
                         licenses = ["Apache-2.0"]
                         publish = true
                         publicDownloadNumbers = true
